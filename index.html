@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>🦇 Kamano's Gotham Mission</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #000000, #111122);
+    font-family: "Comic Sans MS", cursive;
+    color: #f5c518;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* INTRO SCREEN */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+#intro h1 {
+    font-size: 30px;
+}
+
+#intro button {
+    padding: 15px 30px;
+    background: #f5c518;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Moon */
+.moon {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #fff 40%, #ddd 60%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px white;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px white; }
+    to { box-shadow: 0 0 60px white; }
+}
+
+/* Skyline */
+.skyline {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 120px;
+    background: url("https://i.imgur.com/6Iej2c3.png");
+    background-repeat: repeat-x;
+    animation: moveSkyline 40s linear infinite;
+}
+
+@keyframes moveSkyline {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Mission Box */
+.mission-box {
+    margin: 120px auto 40px auto;
+    background: #111;
+    border: 3px solid #f5c518;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 25px #f5c518;
+}
+
+/* Bats */
+.bat {
+    position: absolute;
+    font-size: 30px;
+    animation: fly 15s linear infinite;
+}
+
+@keyframes fly {
+    from { left: -100px; }
+    to { left: 110%; }
+}
+
+/* Batmobile */
+.batmobile {
+    position: absolute;
+    bottom: 80px;
+    left: -200px;
+    font-size: 40px;
+    animation: drive 12s linear infinite;
+}
+
+@keyframes drive {
+    from { left: -200px; }
+    to { left: 110%; }
+}
+.menu-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 22px;
+    background: #ff3c3c;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0 0 15px red;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+button.confirm {
+    padding: 12px 25px;
+    background: #f5c518;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* Gallery */
+.gallery img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 3px solid #f5c518;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(360deg); }
+}
+/* PHOTO BANNER */
+.photo-banner {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 30px;
+    background: black;
+    padding: 10px 0;
+}
+
+.photo-track {
+    display: flex;
+    width: max-content;
+    animation: scrollPhotos 25s linear infinite;
+}
+
+.photo-track img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0 10px;
+    border: 3px solid #f5c518;
+}
+
+@keyframes scrollPhotos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .photo-track img {
+        width: 140px;
+        height: 140px;
+    }
+	.venue-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #f5c518;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #f5c518;
+    transition: 0.3s;
+}
+
+.venue-btn:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <h1>🦇 GOTHAM SECRET MISSION 🦇</h1>
+    <button onclick="enterMission()">ENTER MISSION</button>
+</div>
+
+<div class="moon"></div>
+
+<div class="mission-box" id="missionContent" style="happy Birthday;">
+    <h2>CLASSIFIED BRIEFING</h2>
+    <h3 id="agentName"></h3>
+
+    <h1>🎂 Kamano Turns 4 🎂</h1>
+
+    <p>
+    Date: 28 March 2026<br>
+    Time: 11:00 Hours<br><br>
+    <a href="https://www.papachinos.co.za/silverlakes" 
+   target="_blank" 
+   class="menu-btn">
+   🍕 View Papachinos Menu First
+</a>
+
+    </p>
+     Dress Code: Superheroes Only <br>
+    <button class="confirm" onclick="acceptMission()">
+    ACCEPT MISSION
+    </button>
+	
+
+
+    <h3>📸 Kamano's Hero Moments</h3>
+    
+</div>
+
+<!-- Moving Banner with Picture -->
+<div class="photo-banner">
+    <div class="photo-track">
+        <!-- Add up to 8 pictures here -->
+        <img src="IMG_7565.jpg">
+        <img src="IMG_2610.jpg">
+        <img src="IMG_3297.jpg">
+        <img src="IMG_3608.jpg">
+		<img src="IMG_8243.jpg">
+        <img src="IMG_3749.jpg">
+		<img src="IMG_5539.jpg">
+		<img src="IMG_5133.jpg">
+		<img src="PGAW0005.jpg">
+		<img src="IMG_8012.jpg">
+		<img src="IMG_6574.jpg">
+		<img src="IMG_8239.jpg">	
+		<img src="IMG_4297.jpg">
+		<img src="IMG_8095.mov">
+		<img src="IMG_4309.jpg">
+		<img src="IMG_8265.mov">
+		<img src="IMG_5577.jpg">
+    </div>
+</div>
+
+
+<div class="bat" style="top:150px;">🦇</div>
+<div class="bat" style="top:220px; animation-delay:5s;">🦇</div>
+<div class="bat" style="top:220px; animation-delay:10s;">🦇</div>
+<div class="batmobile">🚗</div>
+
+<!-- Sounds -->
+<audio id="thunder">
+<source src="https://www.soundjay.com/nature/thunder-01.mp3">
+</audio>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<script>
+
+let visitorName = "";
+
+function enterMission() {
+
+    let password = prompt("How old is Kami Turning?");
+
+    if(password === "4") {
+
+        visitorName = prompt("Agent, what is your name?");
+
+        document.getElementById("agentName").innerHTML =
+        "Agent " + visitorName + ", your mission awaits.";
+
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("missionContent").style.display = "block";
+
+        document.getElementById("thunder").play();
+        document.getElementById("music").play();
+
+        startLightning();
+        setInterval(startLightning, 7000);
+
+    } else {
+        alert("ACCESS DENIED 🦇");
+    }
+}
+
+
+function acceptMission() {
+
+    for (let i = 0; i < 150; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor =
+            "hsl(" + Math.random() * 360 + ",100%,50%)";
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(confetti);
+    }
+
+    // Send response via email
+    window.location.href =
+    "mailto:leeporemofilwe@gmail.com?subject=Kamano Birthday RSVP&body=Agent "
+    + visitorName + " has CONFIRMED attendance.";
+
+}
+
+</script>
+
+</body>
+</html>
