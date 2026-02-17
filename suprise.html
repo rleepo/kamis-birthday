@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎉 Surprise Birthday!</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff3399, #6600cc);
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 100px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        .message {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            top: -10px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 20px;
+            background: white;
+            color: #6600cc;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body onload="startConfetti()">
+
+    <h1>🎉 SHHHHH!!! 🎉</h1>
+    <h2>It's a Surprise Party!</h2>
+    <h1>🎂 Kantse Turns 31 🎂</h1>
+
+    <p class="message">
+        Join us as we celebrate Kantse’s 31st Birthday!<br>
+        Don’t tell Kantse 🤫
+    </p>
+
+    <a href="birthday_invite.html">Back to Main Invite</a>
+
+<script>
+function startConfetti() {
+    for (let i = 0; i < 150; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor =
+            "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+
+        document.body.appendChild(confetti);
+    }
+}
+</script>
+
+</body>
+</html>
